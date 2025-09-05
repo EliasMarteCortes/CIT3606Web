@@ -14,3 +14,7 @@ header {
     text-align: center;
     padding: 20vh 0;
 }
+
+.headerTitle {
+    font-size: 4rem;
+}
