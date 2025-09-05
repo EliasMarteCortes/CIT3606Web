@@ -17,4 +17,18 @@ header {
 
 .headerTitle {
     font-size: 4rem;
+    animation: glow 3s infinite ease-in-out;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0px 0px 60px #4A91E3, 0px 0px 6px #4A91E3;
+    }
+    50% {
+        text-shadow: none;
+    }
+
+    100% {
+        text-shadow: 0px 0px 60px #4A91E3, 0px 0px 6px #4A91E3;
+    }
 }
