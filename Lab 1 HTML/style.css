@@ -13,11 +13,16 @@ header {
     color: white;
     text-align: center;
     padding: 20vh 0;
+    background: url(https://inanage.com/wp-content/uploads/2018/10/hollowknight_1.jpg?w=584);
+    background-position: center;
+    background-size: cover;
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.4);
 }
 
 .headerTitle {
     font-size: 4rem;
     animation: glow 3s infinite ease-in-out;
+    font-family: "Times New Roman";
 }
 
 @keyframes glow {
