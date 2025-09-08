@@ -23,18 +23,19 @@ header {
     font-size: 4rem;
     animation: glow 3s infinite ease-in-out;
     font-family: "Times New Roman";
+    text-shadow: 0px 0px 60px black, 0px 0px 60px black;
 }
 
-@keyframes glow {
+ @keyframes glow {
     0% {
-        text-shadow: 0px 0px 60px #4A91E3, 0px 0px 6px #4A91E3;
+        text-shadow: 0px 0px 60px black, 0px 0px 60px black, 0px 0px 60px black;
     }
     50% {
-        text-shadow: none;
+        text-shadow: 0px 0px 60px black;
     }
 
     100% {
-        text-shadow: 0px 0px 60px #4A91E3, 0px 0px 6px #4A91E3;
+        text-shadow: 0px 0px 60px black, 0px 0px 60px black, 0px 0px 60px black;
     }
 }
 
