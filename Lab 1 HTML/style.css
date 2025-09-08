@@ -70,12 +70,6 @@ main {
     flex-direction: column;
 }
 
-.overview {
-    padding-top: 50px;
-    text-align: center;
-    width: 75%;
-}
-
 .overview h2 {
     font-size: 2rem;
 }
@@ -99,7 +93,7 @@ img {
     width: 50%;
 }
 
-.gameplay {
+section {
     padding-top: 50px;
     text-align: center;
     width: 75%;
