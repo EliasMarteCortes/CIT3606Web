@@ -4,6 +4,23 @@
         <meta name="viewport" content="width=device-width">
         <title>CIT 3606 Lab 2 JS Intro</title>
         <link href="style.css" rel="stylesheet" type="text/css" />
+        <script>
+            const today = new Date().getHours();
+            if (today < 12) {
+                alert("Good Morning");
+            }
+            else if (12 <= today && today < 18) {
+                alert("Good Afternoon")
+            }
+            else {
+                alert("Good Evening")
+            }
+
+            let dollarAmount = prompt("Insert a dollar amount to convert to Euro:");
+
+            alert(`${dollarAmount} USD equals ${Math.round((dollarAmount * 0.85) * 100) / 100} EUR`)
+            
+        </script>
     </head>
     <body>
       
