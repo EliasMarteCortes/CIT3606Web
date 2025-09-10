@@ -61,6 +61,9 @@ header {
     align-items: center;
     height: 7vh;
     border-bottom: 2px solid white;
+    position: sticky;
+    top: 0;
+    background-color: #0D0C11;
 }
 
 main {
