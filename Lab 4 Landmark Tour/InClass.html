@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width">
+        <title>CIT 3606 Lab 4</title>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1 id="myH1">Elias' header</h1>
+        
+     <!-- The JavaScript code is attached at the bottom of the page
+           after the page is completely loaded. Write your code in script.js. -->
+     <script>
+        const header = document.getElementById("myH1");
+
+        header.addEventListener("mouseover", () => {
+            header.style.color = "blue"; 
+            header.textContent = "You clicked this text";
+            header.style.fontSize = "3rem";
+        });
+
+        header.addEventListener("mouseout", () => {
+            header.style.color = ""; 
+            header.textContent = "Elias' header";
+            header.style.fontSize = "";
+        })
+     </script> 
+    </body>
+</html>
