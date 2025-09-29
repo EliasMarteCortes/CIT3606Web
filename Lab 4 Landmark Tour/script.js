@@ -24,11 +24,11 @@ menu.addEventListener("change", () => {
             break;
         case "medium":
             landmark.style.height = "200px";
-            landmark.style.width = "280px";
+            landmark.style.width = "360px";
             break;
         case "large":
             landmark.style.height = "300px";
-            landmark.style.width = "380px";
+            landmark.style.width = "540px";
             break;
     }
 })
