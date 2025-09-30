@@ -27,16 +27,16 @@ radiobtns.addEventListener("click", (e) => {
 menu.addEventListener("change", () => {
     switch (menu.value) {
         case "small":
-            landmark.style.height = "100px";
-            landmark.style.width = "180px";
-            break;
-        case "medium":
             landmark.style.height = "200px";
             landmark.style.width = "360px";
             break;
-        case "large":
+        case "medium":
             landmark.style.height = "300px";
             landmark.style.width = "540px";
+            break;
+        case "large":
+            landmark.style.height = "400px";
+            landmark.style.width = "810px";
             break;
     }
 })
