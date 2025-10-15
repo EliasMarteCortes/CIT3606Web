@@ -11,6 +11,8 @@ starImg.src = 'star.png';
 const voidImg = new Image();
 voidImg.src = 'void.png';
 
+const starSound = new Audio();
+starSound.src = 'hit.mp3';
 function createStar() {
     const isVoid = Math.random() < 0.2;
 
@@ -100,6 +102,7 @@ canvas.addEventListener('mousedown', function(e) {
                 score -= 5;
                 stars.splice(i, 1); // Esta línea faltaba
             } else {
+                starSound.play();
                 alert('You caught a Star!\n+10 Points!');
                 score += 10;
                 stars.splice(i, 1); // Esta línea faltaba
