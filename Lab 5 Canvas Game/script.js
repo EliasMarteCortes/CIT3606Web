@@ -3,7 +3,7 @@ const ctx = canvas.getContext('2d');
 const scoreDisplay = document.getElementById('score');
 
 let score = 0;
-stars = [];
+let stars = [];
 
 const starImg = new Image();
 starImg.src = 'star.png';
