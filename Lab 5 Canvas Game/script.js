@@ -20,6 +20,7 @@ function createStar() {
         targetX: Math.random() * 620 + 40,
         targetY: Math.random() * 470 + 40,
         isVoid: isVoid,
+        createdAt: Date.now(),
     };
     stars.push(star);
 }
@@ -39,7 +40,17 @@ function drawFunction() {
 }
 
 function moveStar() {
-    for (let i = 0; i < stars.length; i++) {
+    const now = Date.now();
+    
+    for (let i = stars.length - 1; i >= 0; i--) {
+        const age = now - stars[i].createdAt;
+        const maxAge = stars[i].isVoid ? 7000 : 5000;
+        
+        if (age > maxAge) {
+            stars.splice(i, 1);
+            continue;
+        }
+        
         const distanceX = stars[i].targetX - stars[i].x;
         const distanceY = stars[i].targetY - stars[i].y;
         const dist = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
@@ -87,7 +98,7 @@ for (let i = 0; i < 3; i++) {
     createStar();
 }
 
-setInterval(createStar, 2000);
+setInterval(createStar, 800);
 
 setInterval(moveStar, 30);
 
