@@ -98,13 +98,11 @@ canvas.addEventListener('mousedown', function(e) {
             if (stars[i].isVoid) {
                 alert('Oh no! You touched a Dark Void!\n-5 Points!');
                 score -= 5;
-                scoreDisplay.textContent = score;
-                stars.splice(i, 1);
+                stars.splice(i, 1); // Esta línea faltaba
             } else {
                 alert('You caught a Star!\n+10 Points!');
                 score += 10;
-                scoreDisplay.textContent = score;
-                stars.splice(i, 1);
+                stars.splice(i, 1); // Esta línea faltaba
             }
             return;
         }
