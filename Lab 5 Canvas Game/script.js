@@ -86,7 +86,7 @@ canvas.addEventListener('mousedown', function(e) {
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
 
-    for (let i = 0; i < stars.length; i++) {
+    for (let i = stars.length - 1; i >= 0; i--) {
         const distanceX = mouseX - stars[i].x;
         const distanceY = mouseY - stars[i].y;
         const dist = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
@@ -97,15 +97,13 @@ canvas.addEventListener('mousedown', function(e) {
                 score -= 5;
                 scoreDisplay.textContent = score;
                 stars.splice(i, 1);
-                return;
-            }
-            else {
-                stars.splice(i, 1);
+            } else {
                 alert('You caught a Star!\n+10 Points!');
                 score += 10;
                 scoreDisplay.textContent = score;
+                stars.splice(i, 1);
             }
-            break;
+            return;
         }
     }
 });
