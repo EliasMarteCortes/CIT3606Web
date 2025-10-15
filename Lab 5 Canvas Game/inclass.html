@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta name="viewport" content="width=device-width">
+        <title>CIT 3606 Lab </title>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+    <canvas id="myCanvas" width="500" height="300" style="border:1px solid black;">
+    </canvas>
+    <script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    const offsetX = canvas.getBoundingClientRect().left;
+    const offsetY = canvas.getBoundingClientRect().top;
+
+    ctx.arc(50,50,20,0,360);
+    ctx.fill();
+
+    ctx.beginPath(); 
+    ctx.moveTo(5,10); 
+    ctx.lineTo(100,10);
+    ctx.stroke();
+    ctx.closePath();
+    
+    ctx.fillStyle = "green";
+    ctx.rect(0,0,50,50);
+    ctx.fill();
+    ctx.font = "30px Comic Sans MS";
+    ctx.fillStyle = "red";
+    ctx.textAlign = "center";
+    ctx.fillText("Hello World", canvas.width/5, canvas.height/2);
+
+    const myImg = new Image();
+    myImg.src = 'cat.jpg';
+    myImg.onload = function(){
+    ctx.drawImage(myImg, canvas.width/2.5, 0, 300, 300);
+    
+    }
+    canvas.onmousedown = function(event) {         
+     alert((event.clientX - offsetX) + "," + (event.clientY - offsetY));
+    }
+
+    setInterval(drawFunction, 0);
+    let x = 0, y = 0;
+    function drawFunction() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(myImg, x, y, 100, 100);
+    }
+
+    document.onkeydown = function(e) { 
+        if (e.key == "ArrowLeft") 
+            x -= 5;
+        if (e.key == "ArrowRight") 
+            x += 5;
+        if (e.key == "ArrowUp") 
+            y -= 5;
+        if (e.key == "ArrowDown") 
+            y += 5;
+    }
+</script> 
+    </body>
+</html>
