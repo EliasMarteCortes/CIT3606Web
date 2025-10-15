@@ -165,7 +165,7 @@ canvas.addEventListener('mousedown', function(e) {
                 if (lives <= 0) {
                     gameOver = true;
                 } else {
-                    alert('Oh no! You touched a Dark Void!\n-5 Points!\nLives Remaining: ' + lives);
+                    alert('Oh no! You touched a Dark Void!\n-15 Points!\nLives Remaining: ' + lives);
                 }
             } else {
                 starsCollected++;
