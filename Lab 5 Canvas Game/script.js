@@ -4,6 +4,8 @@ const scoreDisplay = document.getElementById('score');
 
 let score = 0;
 let stars = [];
+let lives = 3;
+let gameOver = false;
 
 const starImg = new Image();
 starImg.src = 'star.png';
@@ -38,31 +40,50 @@ function drawFunction() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     const now = Date.now();
     
-    for (let i = 0; i < stars.length; i++) {
-        if (stars[i].isVoid) {
-            ctx.drawImage(voidImg, stars[i].x - 40, stars[i].y - 40, 80, 80);
-        } else {
-            ctx.drawImage(starImg, stars[i].x - 40, stars[i].y - 40, 80, 80);
+    if (!gameOver) {
+        for (let i = 0; i < stars.length; i++) {
+            if (stars[i].isVoid) {
+                ctx.drawImage(voidImg, stars[i].x - 40, stars[i].y - 40, 80, 80);
+            } else {
+                ctx.drawImage(starImg, stars[i].x - 40, stars[i].y - 40, 80, 80);
+            }
+            
+            const age = now - stars[i].createdAt;
+            const maxAge = stars[i].isVoid ? 7000 : 5000;
+            const timeLeft = maxAge - age;
+            
+            if (timeLeft < 2000) {
+                const pulsePhase = (now % 900) / 900;
+                const pulseOpacity = pulsePhase < 0.5 ? pulsePhase * 2 : (1 - pulsePhase) * 2;
+                ctx.strokeStyle = `rgba(255, 100, 100, ${pulseOpacity})`;
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.arc(stars[i].x, stars[i].y, 50, 0, Math.PI * 2);
+                ctx.stroke();
+            }
         }
+    } else {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
         
-        const age = now - stars[i].createdAt;
-        const maxAge = stars[i].isVoid ? 7000 : 5000;
-        const timeLeft = maxAge - age;
+        ctx.fillStyle = 'white';
+        ctx.font = 'bold 48px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('GAME OVER', canvas.width / 2, canvas.height / 2 - 50);
         
-        if (timeLeft < 2000) {
-            const pulsePhase = (now % 900) / 900;
-            const pulseOpacity = pulsePhase < 0.5 ? pulsePhase * 2 : (1 - pulsePhase) * 2;
-            ctx.strokeStyle = `rgba(255, 100, 100, ${pulseOpacity})`;
-            ctx.lineWidth = 3;
-            ctx.beginPath();
-            ctx.arc(stars[i].x, stars[i].y, 50, 0, Math.PI * 2);
-            ctx.stroke();
-        }
+        ctx.font = 'bold 32px Arial';
+        ctx.fillText('Final Score: ' + score, canvas.width / 2, canvas.height / 2);
+        
+        ctx.font = '24px Arial';
+        ctx.fillText('Click anywhere to restart', canvas.width / 2, canvas.height / 2 + 50);
     }
+    
     ctx.fillStyle = 'white';
     ctx.font = 'bold 24px Arial';
     ctx.textAlign = 'left';
     ctx.fillText('Score: ' + score, 20, 40);
+    ctx.fillText('Lives: ' + lives, 20, 70);
+    
     requestAnimationFrame(drawFunction);
 }
 
@@ -93,6 +114,8 @@ function moveStar() {
 }
 
 canvas.addEventListener('mousedown', function(e) {
+    if (gameOver) return;
+    
     const rect = canvas.getBoundingClientRect();
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
@@ -104,12 +127,16 @@ canvas.addEventListener('mousedown', function(e) {
         
         if (dist < 40) {
             if (stars[i].isVoid) {
-                voidSound.play();
-                alert('Oh no! You touched a Dark Void!\n-5 Points!');
+                lives--;
                 score -= 5;
                 stars.splice(i, 1);
+                
+                if (lives <= 0) {
+                    gameOver = true;
+                } else {
+                    alert('Oh no! You touched a Dark Void!\n-5 Points!\nLives Remaining: ' + lives);
+                }
             } else {
-                starSound.play();
                 alert('You caught a Star!\n+10 Points!');
                 score += 10;
                 stars.splice(i, 1);
