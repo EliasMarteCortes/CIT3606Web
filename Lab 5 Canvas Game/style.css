@@ -24,3 +24,9 @@ canvas {
     box-shadow: 0 0 40px rgba(138,43,226,0.4);
     cursor: crosshair;
 }
+
+.ui {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
