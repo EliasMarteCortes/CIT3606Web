@@ -13,6 +13,12 @@ voidImg.src = 'void.png';
 
 const starSound = new Audio();
 starSound.src = 'hit.mp3';
+starSound.volume = 0.02;
+
+const voidSound = new Audio();
+voidSound.src = 'fail.mp3';
+voidSound.volume = 0.02;
+
 function createStar() {
     const isVoid = Math.random() < 0.2;
 
@@ -98,6 +104,7 @@ canvas.addEventListener('mousedown', function(e) {
         
         if (dist < 40) {
             if (stars[i].isVoid) {
+                voidSound.play();
                 alert('Oh no! You touched a Dark Void!\n-5 Points!');
                 score -= 5;
                 stars.splice(i, 1);
