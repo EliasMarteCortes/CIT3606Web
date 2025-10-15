@@ -158,7 +158,8 @@ canvas.addEventListener('mousedown', function(e) {
         if (dist < 40) {
             if (stars[i].isVoid) {
                 lives--;
-                score -= 5;
+                score -= 15;
+                starsCollected = 0;
                 stars.splice(i, 1);
                 
                 if (lives <= 0) {
