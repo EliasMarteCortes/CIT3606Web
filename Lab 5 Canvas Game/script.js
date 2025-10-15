@@ -6,6 +6,7 @@ let score = 0;
 let stars = [];
 let lives = 3;
 let gameOver = false;
+let starsCollected = 0;
 
 const starImg = new Image();
 starImg.src = 'star.png';
@@ -113,6 +114,14 @@ function moveStar() {
     }
 }
 
+function checkForExtraLife() {
+    if (starsCollected >= 20) {
+        lives++;
+        starsCollected = 0;
+        alert('Bonus! You collected 20 stars!\n+1 Life!');
+    }
+}
+
 function restartGame() {
     score = 0;
     stars = [];
@@ -158,9 +167,12 @@ canvas.addEventListener('mousedown', function(e) {
                     alert('Oh no! You touched a Dark Void!\n-5 Points!\nLives Remaining: ' + lives);
                 }
             } else {
+                starsCollected++;
                 alert('You caught a Star!\n+10 Points!');
                 score += 10;
                 stars.splice(i, 1);
+
+                checkForExtraLife();
             }
             return;
         }
