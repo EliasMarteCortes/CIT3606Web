@@ -28,11 +28,27 @@ function createStar() {
 function drawFunction() {
     ctx.fillStyle = '#0d0d1e';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+    const now = Date.now();
+    
     for (let i = 0; i < stars.length; i++) {
         if (stars[i].isVoid) {
             ctx.drawImage(voidImg, stars[i].x - 40, stars[i].y - 40, 80, 80);
         } else {
             ctx.drawImage(starImg, stars[i].x - 40, stars[i].y - 40, 80, 80);
+        }
+        
+        const age = now - stars[i].createdAt;
+        const maxAge = stars[i].isVoid ? 7000 : 5000;
+        const timeLeft = maxAge - age;
+        
+        if (timeLeft < 2000) {
+            const pulsePhase = (now % 900) / 900;
+            const pulseOpacity = pulsePhase < 0.5 ? pulsePhase * 2 : (1 - pulsePhase) * 2;
+            ctx.strokeStyle = `rgba(255, 100, 100, ${pulseOpacity})`;
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(stars[i].x, stars[i].y, 50, 0, Math.PI * 2);
+            ctx.stroke();
         }
     }
     
