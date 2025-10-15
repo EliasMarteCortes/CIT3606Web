@@ -51,7 +51,10 @@ function drawFunction() {
             ctx.stroke();
         }
     }
-    
+    ctx.fillStyle = 'white';
+    ctx.font = 'bold 24px Arial';
+    ctx.textAlign = 'left';
+    ctx.fillText('Score: ' + score, 20, 40);
     requestAnimationFrame(drawFunction);
 }
 
