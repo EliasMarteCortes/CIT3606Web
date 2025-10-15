@@ -113,8 +113,29 @@ function moveStar() {
     }
 }
 
+function restartGame() {
+    score = 0;
+    stars = [];
+    lives = 3;
+    gameOver = false;
+    
+    clearInterval(createStarInterval);
+    clearInterval(moveStarInterval);
+    
+    for (let i = 0; i < 3; i++) {
+        createStar();
+    }
+    
+    createStarInterval = setInterval(createStar, 800);
+    moveStarInterval = setInterval(moveStar, 30);
+}
+
+
 canvas.addEventListener('mousedown', function(e) {
-    if (gameOver) return;
+    if (gameOver) {
+        restartGame();
+        return;
+    }
     
     const rect = canvas.getBoundingClientRect();
     const mouseX = e.clientX - rect.left;
@@ -150,8 +171,7 @@ for (let i = 0; i < 3; i++) {
     createStar();
 }
 
-setInterval(createStar, 800);
-
-setInterval(moveStar, 30);
+let createStarInterval = setInterval(createStar, 800);
+let moveStarInterval = setInterval(moveStar, 30);
 
 drawFunction();
