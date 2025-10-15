@@ -38,6 +38,21 @@ function moveStar() {
     }
 }
 
+canvas.addEventListener('mousedown', function(e) {
+    const rect = canvas.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    const dx = mouseX - starX;
+    const dy = mouseY - starY;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    
+    if (dist < 40 && starVisible) {
+        starVisible = false;
+        alert('You caught a Star!');
+    }
+});
+
 setInterval(moveStar, 30);
 
 drawFunction();
