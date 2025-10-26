@@ -15,10 +15,12 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Pokedex</h1>
+      </header>
+      <div className="pokemon-container">
         <Pokemon name="Zangoose" image="images\zangoose.png" type="Normal"/>
         <Pokemon name="Mudkip" image="images\mudkip.png" type="Water"/>
         <Pokemon name="Metapod" image="images\metapod.png" type="Bug"/>
-      </header>
+      </div>
     </div>
   );
 }
