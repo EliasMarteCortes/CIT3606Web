@@ -14,3 +14,17 @@ body {
   min-height: 100vh;
   padding: 20px;
 }
+
+.App-header {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.App-header h1 {
+  text-align: center;
+  color: #ffffff;
+  font-size: 3rem;
+  margin-bottom: 40px;
+  text-shadow: 0 0 20px rgba(0, 153, 255, 0.5);
+}
+
