@@ -71,3 +71,9 @@ body {
 .pokemon-card:hover img {
   transform: scale(1.1);
 }
+
+.pokemon-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
