@@ -1,25 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
-import MyButton from './MyButton.js';
+
+function Pokemon(props) {
+  return (
+    <div className="pokemon-card">
+      <h2>{props.name}</h2>
+      <img src={props.image}/>
+      <p>{props.type}</p>
+    </div>
+  );
+}
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Elias
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <MyButton text="Click me!"/>
+        <h1>Pokedex</h1>
       </header>
+      <div className="pokemon-container">
+        <Pokemon name="Zangoose" image="images\zangoose.png" type="Normal"/>
+        <Pokemon name="Mudkip" image="images\mudkip.png" type="Water"/>
+        <Pokemon name="Metapod" image="images\metapod.png" type="Bug"/>
+      </div>
     </div>
   );
 }
