@@ -106,3 +106,13 @@ body {
   outline: none;
   border-color: rgba(0, 153, 255, 0.5);
 }
+
+.search-bar button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: rgba(0, 153, 255, 0.5);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
