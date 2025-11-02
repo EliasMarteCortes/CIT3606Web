@@ -24,7 +24,8 @@ function Search() {
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName.toLowerCase()}`)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
+        setPokemonImage(data.sprites.front_default);
+        setPokemonType(data.types[0].type.name);
       })
       .catch(error => {
         console.error('Error fetching Pokemon data:', error);
@@ -32,10 +33,13 @@ function Search() {
     );
   }
 
+  handleSearch();
+  
   return (
     <div className="search-bar">
       <input type="text" placeholder="Search Pokemon..." value={pokemonName} onChange={changeState}/>
       <button onClick={handleSearch}>Search</button>
+      <Pokemon name={pokemonName} image={pokemonImage} type={pokemonType}/>
     </div>
   );
 }
