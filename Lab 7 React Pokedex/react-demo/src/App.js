@@ -10,6 +10,22 @@ function Pokemon(props) {
   );
 }
 
+function Search() {
+  const [pokemonName, setPokemonName] = useState('pikachu');
+  const [pokemonImage, setPokemonImage] = useState('');
+  const [pokemonType, setPokemonType] = useState('');
+
+  function changeState(e) {
+    setPokemonName(e.target.value);
+  }
+  return (
+    <div className="search-bar">
+      <input type="text" placeholder="Search Pokemon..."/>
+      <button>Search</button>
+    </div>
+  );
+}
+
 function App() {
   return (
     <div className="App">
