@@ -51,11 +51,6 @@ function App() {
         <h1>Pokedex</h1>
       </header>
       <Search />
-      <div className="pokemon-container">
-        <Pokemon name="Zangoose" image="images\zangoose.png" type="Normal"/>
-        <Pokemon name="Mudkip" image="images\mudkip.png" type="Water"/>
-        <Pokemon name="Metapod" image="images\metapod.png" type="Bug"/>
-      </div>
     </div>
   );
 }
