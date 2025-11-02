@@ -34,9 +34,11 @@ function Search() {
   }
 
   return (
-    <div className="search-bar">
-      <input type="text" placeholder="Search Pokemon..." value={pokemonName} onChange={changeState}/>
-      <button onClick={handleSearch}>Search</button>
+    <div className='search-container'>
+      <div className="search-bar">
+        <input type="text" placeholder="Search Pokemon..." value={pokemonName} onChange={changeState}/>
+        <button onClick={handleSearch}>Search</button>
+      </div>
       <Pokemon name={pokemonName} image={pokemonImage} type={pokemonType}/>
     </div>
   );
