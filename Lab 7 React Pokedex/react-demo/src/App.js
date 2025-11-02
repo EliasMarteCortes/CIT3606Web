@@ -13,8 +13,8 @@ function Pokemon(props) {
 
 function Search() {
   const [pokemonName, setPokemonName] = useState('pikachu');
-  const [pokemonImage, setPokemonImage] = useState('');
-  const [pokemonType, setPokemonType] = useState('');
+  const [pokemonImage, setPokemonImage] = useState('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png');
+  const [pokemonType, setPokemonType] = useState('electric');
 
   function changeState(e) {
     setPokemonName(e.target.value);
@@ -33,8 +33,6 @@ function Search() {
     );
   }
 
-  handleSearch();
-  
   return (
     <div className="search-bar">
       <input type="text" placeholder="Search Pokemon..." value={pokemonName} onChange={changeState}/>
