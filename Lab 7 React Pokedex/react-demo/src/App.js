@@ -1,4 +1,5 @@
 import './App.css';
+import { useState } from 'react';
 
 function Pokemon(props) {
   return (
@@ -18,10 +19,23 @@ function Search() {
   function changeState(e) {
     setPokemonName(e.target.value);
   }
+
+  function handleSearch() {
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName.toLowerCase()}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.error('Error fetching Pokemon data:', error);
+      }
+    );
+  }
+
   return (
     <div className="search-bar">
-      <input type="text" placeholder="Search Pokemon..."/>
-      <button>Search</button>
+      <input type="text" placeholder="Search Pokemon..." value={pokemonName} onChange={changeState}/>
+      <button onClick={handleSearch}>Search</button>
     </div>
   );
 }
@@ -32,6 +46,7 @@ function App() {
       <header className="App-header">
         <h1>Pokedex</h1>
       </header>
+      <Search />
       <div className="pokemon-container">
         <Pokemon name="Zangoose" image="images\zangoose.png" type="Normal"/>
         <Pokemon name="Mudkip" image="images\mudkip.png" type="Water"/>
