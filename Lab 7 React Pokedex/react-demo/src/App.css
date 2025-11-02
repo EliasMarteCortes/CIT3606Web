@@ -115,4 +115,13 @@ body {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-bar button:hover {
+  background-color: rgba(0, 153, 255, 0.8);
+}
+
+.search-bar button:active {
+  transform: scale(0.98);
 }
