@@ -1,11 +1,13 @@
 <form action="/insert" method="post">
     Please create a new user account:
     <br>
-    <label>Username</label><input type="text"  name="username" id="username" maxlength="40">
+    <label for="username">Username</label><input type="text"  name="username" id="username" maxlength="40">
     <br>
-    <label>Password</label><input type="text"  name="password" id="password" maxlength="40">
+    <label for="password">Password</label><input type="text"  name="password" id="password" maxlength="40">
     <br>
-    <label>Email Address</label><input type="email"  name="email" id="email" maxlength="40">
+    <label for="email">Email Address</label><input type="email"  name="email" id="email" maxlength="40">
     <br>
     <button type="submit">Submit</button>
+    <br>
+    <a href="/forgot">Forgot Password?</a>
 </form>
