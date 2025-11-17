@@ -27,7 +27,20 @@ app.post('/insert', function(req, res){
 });
 
 app.get('/forgot', function(req, res){
-   res.send("Forgot Password Page");
+   res.sendFile(__dirname + "/forgot.html");
+});
+
+app.post('/retrieve', function(req, res){
+   const sql = "SELECT username, password FROM Users WHERE email = ?";
+  conn.query(sql, [req.body.email],
+    function (err, result) {
+      if (err) throw err;
+      if (result.length > 0) {
+          res.send("Your password is: " + result[0].password + " and your username is: " + result[0].username);
+      } else {
+          res.send("Email not found");
+      }
+      });
 });
    
 app.listen(8080);
