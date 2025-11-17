@@ -1,9 +1,9 @@
 const mysql = require('mysql');
-<<<<<<< HEAD
-require('dotenv').config();               
-=======
+const express = require('express'); 
+const app = express();
 require('dotenv').config();
->>>>>>> a85993ae843eac4728a513bc51754d3483bde86d
+var bodyParser = require('body-parser');
+
 const conn = mysql.createConnection({
   host: "mysql1-p2.ezhostingserver.com",
   database: "citdemo",
@@ -11,50 +11,23 @@ const conn = mysql.createConnection({
   password: process.env.DB_PASSWORD
 });
 
-
-const express = require('express'); 
-const app = express();
-app.get('/', function(req, res){
-   conn.connect((err) => {
-  const sql = 'SELECT * FROM students WHERE lastname = ?';
-const lastname = "Mouse";
-conn.query(sql, [lastname], function (err, result) {
-  if (err) throw err;
-  console.log(result);
- res.send(result);
-});
-<<<<<<< HEAD
-
-
-});
-});
-=======
-});
-});
-
-var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.get('/form', function(req, res){
    res.sendFile(__dirname + "/form.html");
 });
 
-app.post('/submit', function(req, res){
-  const sql = 'SELECT * FROM students WHERE lastname = ?';
-  console.log("Form contents: " + req.body.lastname);
-  conn.query(sql, [req.body.lastname], function (err, result) {
-    if (err) throw err;
-    if (result.length == 0)  { res.send("no result"); }
-    else {  console.log(result);
-        let resultStr = ""
-          result.map((item) => {
-     resultStr += item.firstname + " "  + item.lastname + " ";
-  });
+app.post('/insert', function(req, res){
+   const sql = "INSERT INTO Users (username, password, email) VALUES (?, ?, ?)";
+  conn.query(sql, [req.body.username, req.body.password, req.body.email],  
+   function (err, result) {
+      if (err) throw err;
+      res.send("Insert successful");
+     });
+});
 
-               res.send(resultStr);
-   }  }  );
-});    
-
-
->>>>>>> a85993ae843eac4728a513bc51754d3483bde86d
+app.get('/forgot', function(req, res){
+   res.send("Forgot Password Page");
+});
+   
 app.listen(8080);
