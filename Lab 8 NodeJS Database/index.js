@@ -1,5 +1,9 @@
 const mysql = require('mysql');
+<<<<<<< HEAD
 require('dotenv').config();               
+=======
+require('dotenv').config();
+>>>>>>> a85993ae843eac4728a513bc51754d3483bde86d
 const conn = mysql.createConnection({
   host: "mysql1-p2.ezhostingserver.com",
   database: "citdemo",
@@ -19,8 +23,38 @@ conn.query(sql, [lastname], function (err, result) {
   console.log(result);
  res.send(result);
 });
+<<<<<<< HEAD
 
 
 });
 });
+=======
+});
+});
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended:true}));
+
+app.get('/form', function(req, res){
+   res.sendFile(__dirname + "/form.html");
+});
+
+app.post('/submit', function(req, res){
+  const sql = 'SELECT * FROM students WHERE lastname = ?';
+  console.log("Form contents: " + req.body.lastname);
+  conn.query(sql, [req.body.lastname], function (err, result) {
+    if (err) throw err;
+    if (result.length == 0)  { res.send("no result"); }
+    else {  console.log(result);
+        let resultStr = ""
+          result.map((item) => {
+     resultStr += item.firstname + " "  + item.lastname + " ";
+  });
+
+               res.send(resultStr);
+   }  }  );
+});    
+
+
+>>>>>>> a85993ae843eac4728a513bc51754d3483bde86d
 app.listen(8080);
