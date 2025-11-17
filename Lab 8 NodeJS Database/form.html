@@ -1,6 +1,11 @@
-<form action="/submit" method="post">
-    Search for Last Name: 
-    <input type="text"  name="lastname">
+<form action="/insert" method="post">
+    Please create a new user account:
+    <br>
+    <label>Username</label><input type="text"  name="username" id="username" maxlength="40">
+    <br>
+    <label>Password</label><input type="text"  name="password" id="password" maxlength="40">
+    <br>
+    <label>Email Address</label><input type="email"  name="email" id="email" maxlength="40">
     <br>
     <button type="submit">Submit</button>
 </form>
